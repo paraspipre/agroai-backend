@@ -17,7 +17,7 @@ const generateAccessTokens = async (userId) => {
 }
 
 const options = {
-    httpOnly: false,
+    httpOnly: true,
     secure: true,
     path: "/",
     sameSite: "none",
@@ -59,7 +59,9 @@ const registerUser = asyncHandler(async (req, res) => {
     
 
     return res.status(201).cookie("accessToken", accessToken, options).json(
-        new ApiResponse(200, createdUser, "User registered Successfully")
+        new ApiResponse(200, {
+            user: createdUser, accessToken
+        }, "User registered Successfully")
     )
 
 })

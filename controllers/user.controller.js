@@ -19,8 +19,9 @@ const generateAccessTokens = async (userId) => {
 const options = {
     // httpOnly: true,
     secure: true,
-    path: "/",
+    // path: "/",
     sameSite: "none",
+    maxAge:900000000
 }
 
 const registerUser = asyncHandler(async (req, res) => {

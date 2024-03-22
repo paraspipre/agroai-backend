@@ -180,7 +180,7 @@ const updateChatTitle = asyncHandler(async (req, res) => {
 
 const getChat = asyncHandler(async (req, res) => {
     const { chatid } = req.params
-    const chat = await Chat.findById(chatid).populate({ path: "message", select: { user: 1, ai: 1, _id: 0 }, options: { sort: { createdAt: 1 } } })
+    const chat = await Chat.findById(chatid).populate({ path: "messages", select: { user: 1, ai: 1, _id: 0 }, options: { sort: { createdAt: 1 } } })
     return res
         .status(200)
         .json(

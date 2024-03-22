@@ -149,7 +149,7 @@ const updateChat = asyncHandler(async (req, res) => {
         user,
         ai
     })
-    const chat = await Chat.findByIdAndUpdate(chatid, { $push: { message: msg._id } })
+    const chat = await Chat.findByIdAndUpdate(chatid, { $push: { messages: msg._id } })
 
     return res
         .status(200)

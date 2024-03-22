@@ -84,8 +84,8 @@ const loginUser = asyncHandler(async (req, res) => {
     const loggedInUser = await User.findById(user._id).select("-password -chatHistory")
 
     const options = {
-        // httpOnly: true,
-        secure: false,
+        httpOnly: true,
+        secure: true
     }
 
     return res
@@ -106,8 +106,8 @@ const loginUser = asyncHandler(async (req, res) => {
 const logoutUser = asyncHandler(async (req, res) => {
 
     const options = {
-        // httpOnly: true,
-        secure: false
+        httpOnly: true,
+        secure: true
     }
 
     return res

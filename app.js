@@ -4,12 +4,12 @@ import cookieParser from "cookie-parser"
 import morgan from "morgan"
 const app = express()
 
+app.use(cookieParser())
 app.use(cors({
     origin:"https://agroai-nine.vercel.app",
     credentials: true
 }))
 
-app.use(cookieParser())
 app.use(morgan(':method :status :url'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))

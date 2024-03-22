@@ -20,7 +20,7 @@ const options = {
     // httpOnly: true,
     secure: true,
     path: "/",
-    // sameSite: "none",
+    sameSite: "none",
 }
 
 const registerUser = asyncHandler(async (req, res) => {

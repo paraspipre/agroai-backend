@@ -5,7 +5,7 @@ import morgan from "morgan"
 const app = express()
 
 app.use(cors({
-    origin:"http://localhost:3000",
+    origin:"https://agroai-nine.vercel.app",
     credentials: true
 }))
 

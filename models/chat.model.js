@@ -3,10 +3,10 @@ import mongoose, { Schema } from "mongoose";
 
 const messageSchema = new Schema(
    {
-      role: {
+      user: {
          type: String
       },
-      content: {
+      ai: {
          type: String
       }
    },
@@ -21,9 +21,9 @@ const chatSchema = new Schema(
    {
       title: {
          type: String,
-         default:"Title"
+         default: "Title"
       },
-      message: [
+      messages: [
          {
             type: Schema.Types.ObjectId,
             ref: "Message"

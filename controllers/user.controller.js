@@ -17,7 +17,7 @@ const generateAccessTokens = async (userId) => {
 }
 
 const options = {
-    httpOnly: true,
+    httpOnly: false,
     secure: true,
     path: "/",
     sameSite: "none",
@@ -107,7 +107,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const logoutUser = asyncHandler(async (req, res) => {
 
-
     return res
         .status(200)
         .clearCookie("accessToken", options)
@@ -143,10 +142,10 @@ const createChat = asyncHandler(async (req, res) => {
 
 const updateChat = asyncHandler(async (req, res) => {
     const { chatid } = req.params
-    const {role, content} = req.body
+    const {user, ai} = req.body
     const msg = await Message.create({
-        role,
-        content
+        user,
+        ai
     })
     const chat = await Chat.findByIdAndUpdate(chatid, { $push: { message: msg._id } })
 
@@ -179,7 +178,7 @@ const updateChatTitle = asyncHandler(async (req, res) => {
 
 const getChat = asyncHandler(async (req, res) => {
     const { chatid } = req.params
-    const chat = await Chat.findById(chatid).populate({ path: "message", select: { role: 1, content: 1, _id: 0 }, options: { sort: { createdAt: 1 } } })
+    const chat = await Chat.findById(chatid).populate({ path: "message", select: { user: 1, ai: 1, _id: 0 }, options: { sort: { createdAt: 1 } } })
     return res
         .status(200)
         .json(

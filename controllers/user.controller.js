@@ -17,9 +17,9 @@ const generateAccessTokens = async (userId) => {
 }
 
 const options = {
-    // httpOnly: true,
+    httpOnly: true,
     secure: true,
-    // path: "/",
+    path: "/",
     sameSite: "none",
     maxAge:900000000
 }

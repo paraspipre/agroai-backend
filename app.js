@@ -6,8 +6,8 @@ const app = express()
 
 app.use(cookieParser())
 app.use(cors({
-    origin:"https://agroai-nine.vercel.app",
-    credentials: true
+    origin: "https://agroai-nine.vercel.app",
+    credentials: true,
 }))
 
 app.use(morgan(':method :status :url'))

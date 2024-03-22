@@ -17,10 +17,10 @@ const generateAccessTokens = async (userId) => {
 }
 
 const options = {
-    httpOnly: true,
-    secure: true,
-    path: "/",
-    sameSite: "none",
+    // httpOnly: true,
+    // secure: true,
+    // path: "/",
+    // sameSite: "none",
 }
 
 const registerUser = asyncHandler(async (req, res) => {

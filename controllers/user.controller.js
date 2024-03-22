@@ -18,8 +18,8 @@ const generateAccessTokens = async (userId) => {
 
 const options = {
     // httpOnly: true,
-    // secure: true,
-    // path: "/",
+    secure: true,
+    path: "/",
     // sameSite: "none",
 }
 

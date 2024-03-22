@@ -16,6 +16,13 @@ const generateAccessTokens = async (userId) => {
     }
 }
 
+const options = {
+    httpOnly: true,
+    secure: true,
+    path: "/",
+    sameSite: "none",
+}
+
 const registerUser = asyncHandler(async (req, res) => {
     const { email, name, password } = req.body
     console.log(email)
@@ -48,10 +55,7 @@ const registerUser = asyncHandler(async (req, res) => {
 
     const { accessToken } = await generateAccessTokens(user._id)
 
-    const options = {
-        // httpOnly: true,
-        secure: false
-    }
+    
 
     return res.status(201).cookie("accessToken", accessToken, options).json(
         new ApiResponse(200, createdUser, "User registered Successfully")
@@ -83,10 +87,7 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const loggedInUser = await User.findById(user._id).select("-password -chatHistory")
 
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
+    
 
     return res
         .status(200)
@@ -105,10 +106,6 @@ const loginUser = asyncHandler(async (req, res) => {
 
 const logoutUser = asyncHandler(async (req, res) => {
 
-    const options = {
-        httpOnly: true,
-        secure: true
-    }
 
     return res
         .status(200)
